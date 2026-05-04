@@ -1,4 +1,10 @@
 ﻿@inject IHoaClientContext Hoa
+@inject GearrOnes.HOA.Template.Features.Shared.Navigation.INavigationService NavService
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var user = HttpContextAccessor.HttpContext?.User ?? new System.Security.Claims.ClaimsPrincipal();
+    var navItems = NavService.GetMainNavigation(user);
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,15 +16,36 @@
 <body>
     <header class="border-bottom mb-3">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container d-flex justify-content-between align-items-center">
-                <a asp-controller="Home" asp-action="Index" class="text-decoration-none text-dark">
+            <div class="container-fluid">
+                <a asp-controller="Home" asp-action="Index" class="text-decoration-none text-dark me-3">
                     @await Html.PartialAsync("_HoaHeader", Hoa)
                 </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        @foreach (var item in navItems)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="@item.Controller" asp-action="@item.Action">
+                                    @if (!string.IsNullOrWhiteSpace(item.IconClass))
+                                    {
+                                        <span class="@item.IconClass me-1" aria-hidden="true"></span>
+                                    }
+                                    @item.Title
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
 
-    <div class="container">
+    <div class="container mt-3">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -29,5 +56,7 @@
             @Hoa.LegalName
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
