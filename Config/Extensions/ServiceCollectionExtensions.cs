@@ -28,4 +28,27 @@ public static class ServiceCollectionExtensions
 
         return services;
     }
+
+    public static IServiceCollection AddHoaClientContext(this IServiceCollection services, IConfiguration config)
+    {
+        var section = config.GetSection("HoaClient");
+        var options = section.Get<HoaClientOptions>() ?? new HoaClientOptions();
+
+        ValidateRequired(options.HoaName, "HoaClient:HoaName");
+        ValidateRequired(options.PortalTitle, "HoaClient:PortalTitle");
+        ValidateRequired(options.ContactEmail, "HoaClient:ContactEmail");
+
+        services.Configure<HoaClientOptions>(section);
+        services.AddSingleton<IHoaClientContext, HoaClientContext>();
+
+        return services;
+    }
+
+    private static void ValidateRequired(string? value, string key)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            throw new InvalidOperationException($"Missing required configuration value for '{key}'.");
+        }
+    }
 }

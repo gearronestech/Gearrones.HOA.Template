@@ -1,0 +1,9 @@
+﻿@model IHoaClientContext
+
+<div class="d-flex align-items-center gap-2">
+    @if (!string.IsNullOrWhiteSpace(Model.LogoPath))
+    {
+        <img src="@Model.LogoPath" alt="@Model.HoaName logo" style="height:40px;width:auto;" />
+    }
+    <span class="navbar-brand mb-0 h1">@Model.HoaName</span>
+</div>
