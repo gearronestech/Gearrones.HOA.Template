@@ -1,6 +1,9 @@
+using GearrOnes.HOA.Template.Config.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddPlanConfiguration(builder.Configuration);
 
 var app = builder.Build();
 
