@@ -1,9 +1,52 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Config\Config.csproj" />
+		<ProjectReference Include="..\Core\Core.csproj" />
+        <Folder Include="Accounts\Models\" />
+        <Folder Include="Accounts\ViewModels\" />
+        <Folder Include="Accounts\Services\" />
+        <Folder Include="Accounts\Controllers\" />
+        <Folder Include="Board\Controllers\" />
+        <Folder Include="Board\Models\" />
+        <Folder Include="Board\Services\" />
+        <Folder Include="Board\ViewModels\" />
+        <Folder Include="Community\Controllers\" />
+        <Folder Include="Community\Models\" />
+        <Folder Include="Community\Services\" />
+        <Folder Include="Community\ViewModels\" />
+        <Folder Include="Dashboard\Controllers\" />
+        <Folder Include="Dashboard\Models\" />
+        <Folder Include="Dashboard\Services\" />
+        <Folder Include="Dashboard\ViewModels\" />
+        <Folder Include="Documents\Controllers\" />
+        <Folder Include="Documents\Models\" />
+        <Folder Include="Documents\Services\" />
+        <Folder Include="Documents\ViewModels\" />
+        <Folder Include="ExternalIntegrations\Controllers\" />
+        <Folder Include="ExternalIntegrations\Models\" />
+        <Folder Include="ExternalIntegrations\Services\" />
+        <Folder Include="ExternalIntegrations\ViewModels\" />
+        <Folder Include="Financials\Controllers\" />
+        <Folder Include="Financials\Models\" />
+        <Folder Include="Financials\Services\" />
+        <Folder Include="Financials\ViewModels\" />
+        <Folder Include="Requests\Controllers\" />
+        <Folder Include="Requests\Models\" />
+        <Folder Include="Requests\Services\" />
+        <Folder Include="Requests\ViewModels\" />
+        <Folder Include="Violations\Controllers\" />
+        <Folder Include="Violations\Models\" />
+        <Folder Include="Violations\Services\" />
+        <Folder Include="Violations\ViewModels\" />
+        <Folder Include="Voting\Controllers\" />
+        <Folder Include="Voting\Models\" />
+        <Folder Include="Voting\Services\" />
+        <Folder Include="Voting\ViewModels\" />
+    </ItemGroup>
 
 </Project>

@@ -1,10 +1,20 @@
+# Build output
 bin/
 obj/
-.vs/
+
+# User-specific files
 *.user
 *.suo
-*.db
-*.log
-node_modules/
-wwwroot/lib/
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# VS Code
+.vs/
+.vscode/
+
+# ASP.NET
 appsettings.Development.json
+wwwroot/lib/
