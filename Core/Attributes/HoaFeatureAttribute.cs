@@ -3,9 +3,15 @@
 namespace GearrOnes.HOA.Template.Core.Attributes;
 
 /// <summary>
-/// Tags classes or methods with HOA feature metadata.
+/// Tags HOA portal code with bundle/tier/feature metadata.
+/// Intended for controllers, services, models, interfaces, and major methods.
 /// </summary>
-[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
+[AttributeUsage(
+    AttributeTargets.Class |
+    AttributeTargets.Interface |
+    AttributeTargets.Method,
+    AllowMultiple = true,
+    Inherited = true)]
 public sealed class HoaFeatureAttribute : Attribute
 {
     public HoaFeatureAttribute(string bundle, int tier)

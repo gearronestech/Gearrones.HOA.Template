@@ -5,11 +5,19 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.11" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<ProjectReference Include="..\Config\Config.csproj" />
 		<ProjectReference Include="..\Core\Core.csproj" />
-        <Folder Include="Accounts\Models\" />
-        <Folder Include="Accounts\ViewModels\" />
-        <Folder Include="Accounts\Services\" />
         <Folder Include="Accounts\Controllers\" />
         <Folder Include="Board\Controllers\" />
         <Folder Include="Board\Models\" />
@@ -35,10 +43,6 @@
         <Folder Include="Financials\Models\" />
         <Folder Include="Financials\Services\" />
         <Folder Include="Financials\ViewModels\" />
-        <Folder Include="Requests\Controllers\" />
-        <Folder Include="Requests\Models\" />
-        <Folder Include="Requests\Services\" />
-        <Folder Include="Requests\ViewModels\" />
         <Folder Include="Violations\Controllers\" />
         <Folder Include="Violations\Models\" />
         <Folder Include="Violations\Services\" />

@@ -1,0 +1,40 @@
+﻿@model GearrOnes.HOA.Template.Features.Requests.ViewModels.RequestDetailViewModel
+@{
+    ViewData["Title"] = "Request Details";
+}
+
+<h1>@Model.Request.Title</h1>
+<p><strong>Status:</strong> @Model.Request.Status</p>
+<p><strong>Submitted:</strong> @Model.Request.CreatedUtc.ToString("u")</p>
+<p>@Model.Request.Description</p>
+
+<h2>Conversation</h2>
+@foreach (var item in Model.Timeline)
+{
+    <div class="card mb-2 @(item.IsInternalNote ? "border-warning" : "")">
+        <div class="card-body">
+            @if (item.IsInternalNote)
+            {
+                <div class="badge bg-warning text-dark mb-2">Internal note</div>
+            }
+            <div><strong>@item.UserDisplayName</strong> <small class="text-muted">@item.CreatedUtc.ToString("u")</small></div>
+            <div>@item.Message</div>
+        </div>
+    </div>
+}
+
+<h3>Add message</h3>
+<form asp-action="AddMessage" method="post">
+    <input type="hidden" name="RequestId" value="@Model.Request.Id" />
+    <div class="mb-3">
+        <textarea class="form-control" name="Message" rows="4"></textarea>
+    </div>
+    @if (Model.CanCreateInternalNote)
+    {
+        <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" value="true" name="IsInternalNote" id="isInternalNote" />
+            <label class="form-check-label" for="isInternalNote">Post as internal note (board/admin only)</label>
+        </div>
+    }
+    <button class="btn btn-primary" type="submit">Send</button>
+</form>

@@ -1,5 +1,21 @@
-﻿@{
+﻿@model IReadOnlyList<GearrOnes.HOA.Template.Features.Requests.Services.RequestSummaryViewModel>
+
+@{
     ViewData["Title"] = "Requests";
 }
 
 <h1>Requests</h1>
+
+<table class="table">
+    <thead><tr><th>Title</th><th>Status</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Status</td>
+                <td><a asp-action="Details" asp-route-id="@item.Id">Open</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

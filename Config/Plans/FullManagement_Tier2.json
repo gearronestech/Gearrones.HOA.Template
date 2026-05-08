@@ -1,18 +1,18 @@
 {
   "Bundle": "FullManagement",
-  "Tier": 1,
-  "PlanDisplayName": "Full Management HOA - Tier 1",
+  "Tier": 2,
+  "PlanDisplayName": "Full Management HOA - Tier 2",
   "FeatureFlags": {
     "Dashboard": true,
     "Documents": true,
     "Requests": true,
+    "RequestMessaging": true,
     "Accounts": true,
     "Board": true,
     "Financials": false,
     "Community": false,
     "Violations": false,
     "Voting": false,
-    "ExternalIntegrations": false,
-    "RequestMessaging": false
+    "ExternalIntegrations": false
   }
 }

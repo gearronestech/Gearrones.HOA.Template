@@ -19,6 +19,7 @@ public sealed class FeatureFlagService : IFeatureFlagService
             [FeatureKeys.Dashboard] = f => f.Dashboard,
             [FeatureKeys.Documents] = f => f.Documents,
             [FeatureKeys.Requests] = f => f.Requests,
+            [FeatureKeys.RequestMessaging] = f => f.RequestMessaging,
             [FeatureKeys.Accounts] = f => f.Accounts,
             [FeatureKeys.Board] = f => f.Board,
             [FeatureKeys.Financials] = f => f.Financials,

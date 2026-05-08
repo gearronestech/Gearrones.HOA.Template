@@ -1,0 +1,24 @@
+﻿@model IEnumerable<GearrOnes.HOA.Template.Features.Accounts.Models.ApplicationUser>
+@{
+    ViewData["Title"] = "Pending Users";
+}
+<h2>Pending User Approvals</h2>
+<table class="table table-striped mt-3">
+    <thead><tr><th>Name</th><th>Email</th><th>Created</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.FirstName @user.LastName</td>
+                <td>@user.Email</td>
+                <td>@user.CreatedUtc.ToString("u")</td>
+                <td>
+                    <form asp-action="ApproveUser" method="post">
+                        <input type="hidden" name="id" value="@user.Id" />
+                        <button class="btn btn-success btn-sm" type="submit">Approve</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

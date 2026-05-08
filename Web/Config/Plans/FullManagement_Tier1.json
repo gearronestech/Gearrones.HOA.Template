@@ -12,6 +12,7 @@
     "Community": false,
     "Violations": false,
     "Voting": false,
-    "ExternalIntegrations": false
+    "ExternalIntegrations": false,
+    "RequestMessaging": false
   }
 }

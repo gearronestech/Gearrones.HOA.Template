@@ -20,24 +20,22 @@
                 <a asp-controller="Home" asp-action="Index" class="text-decoration-none text-dark me-3">
                     @await Html.PartialAsync("_HoaHeader", Hoa)
                 </a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="mainNav">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <div class="collapse navbar-collapse show" id="mainNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
                         @foreach (var item in navItems)
                         {
+                            <li class="nav-item"><a class="nav-link" asp-controller="@item.Controller" asp-action="@item.Action">@item.Title</a></li>
+                        }
+                        @if (user.Identity?.IsAuthenticated ?? false)
+                        {
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="@item.Controller" asp-action="@item.Action">
-                                    @if (!string.IsNullOrWhiteSpace(item.IconClass))
-                                    {
-                                        <span class="@item.IconClass me-1" aria-hidden="true"></span>
-                                    }
-                                    @item.Title
-                                </a>
+                                <form asp-controller="Account" asp-action="Logout" method="post"><button type="submit" class="btn btn-link nav-link">Logout</button></form>
                             </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Login">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Register">Register</a></li>
                         }
                     </ul>
                 </div>
