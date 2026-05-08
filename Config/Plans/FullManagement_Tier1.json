@@ -9,6 +9,7 @@
     "Accounts": true,
     "Board": true,
     "Financials": false,
+    "FinancialLedger": false,
     "Community": false,
     "Violations": false,
     "Voting": false,

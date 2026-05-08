@@ -9,6 +9,7 @@ public static class FeatureKeys
     public const string Accounts = nameof(Accounts);
     public const string Board = nameof(Board);
     public const string Financials = nameof(Financials);
+    public const string FinancialLedger = nameof(FinancialLedger);
     public const string Community = nameof(Community);
     public const string Violations = nameof(Violations);
     public const string Voting = nameof(Voting);

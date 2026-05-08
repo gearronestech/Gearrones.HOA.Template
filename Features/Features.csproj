@@ -39,10 +39,6 @@
         <Folder Include="ExternalIntegrations\Models\" />
         <Folder Include="ExternalIntegrations\Services\" />
         <Folder Include="ExternalIntegrations\ViewModels\" />
-        <Folder Include="Financials\Controllers\" />
-        <Folder Include="Financials\Models\" />
-        <Folder Include="Financials\Services\" />
-        <Folder Include="Financials\ViewModels\" />
         <Folder Include="Violations\Controllers\" />
         <Folder Include="Violations\Models\" />
         <Folder Include="Violations\Services\" />

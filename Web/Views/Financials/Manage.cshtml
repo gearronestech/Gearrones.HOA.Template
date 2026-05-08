@@ -1,0 +1,30 @@
+﻿@using GearrOnes.HOA.Template.Features.Financials.ViewModels
+@{
+    ViewData["Title"] = "Financial Management";
+}
+<h1>Financial Management</h1>
+<div class="row">
+    <div class="col-md-6">
+        <h3>Add Manual Charge</h3>
+        <form asp-action="AddCharge" method="post">
+            <div class="mb-2"><label>Ownership</label><select name="OwnershipId" class="form-select" asp-items="ViewBag.Ownerships"></select></div>
+            <div class="mb-2"><label>Property Id</label><input name="PropertyId" class="form-control" /></div>
+            <div class="mb-2"><label>Entry Type</label><input name="EntryType" class="form-control" value="ManualCharge" /></div>
+            <div class="mb-2"><label>Amount</label><input name="Amount" class="form-control" /></div>
+            <div class="mb-2"><label>Due Date</label><input name="DueDate" type="date" class="form-control" /></div>
+            <div class="mb-2"><label>Description</label><input name="Description" class="form-control" /></div>
+            <button type="submit" class="btn btn-primary">Add Charge</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <h3>Record Manual Payment</h3>
+        <form asp-action="AddPayment" method="post">
+            <div class="mb-2"><label>Ownership</label><select name="OwnershipId" class="form-select" asp-items="ViewBag.Ownerships"></select></div>
+            <div class="mb-2"><label>Property Id</label><input name="PropertyId" class="form-control" /></div>
+            <div class="mb-2"><label>Amount</label><input name="Amount" class="form-control" /></div>
+            <div class="mb-2"><label>Method</label><input name="PaymentMethod" class="form-control" value="Manual" /></div>
+            <div class="mb-2"><label>Reference</label><input name="ReferenceNumber" class="form-control" /></div>
+            <button type="submit" class="btn btn-success">Record Payment</button>
+        </form>
+    </div>
+</div>

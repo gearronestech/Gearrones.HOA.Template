@@ -1,0 +1,24 @@
+﻿@model GearrOnes.HOA.Template.Features.Financials.ViewModels.FinancialLedgerViewModel
+@{
+    ViewData["Title"] = "Financial Ledger";
+}
+<h1>Financial Ledger</h1>
+<p><strong>Property:</strong> @Model.PropertyAddress</p>
+<p><strong>Running Balance:</strong> @Model.RunningBalance.ToString("C")</p>
+<p><strong>Charges:</strong> @Model.TotalCharges.ToString("C") | <strong>Payments:</strong> @Model.TotalPayments.ToString("C")</p>
+<table class="table table-striped">
+    <thead><tr><th>Date</th><th>Type</th><th>Description</th><th>Charge</th><th>Payment</th><th>Balance</th></tr></thead>
+    <tbody>
+        @foreach (var tx in Model.Transactions)
+        {
+            <tr>
+                <td>@tx.DateUtc.ToString("yyyy-MM-dd")</td>
+                <td>@tx.Type</td>
+                <td>@tx.Description</td>
+                <td>@tx.ChargeAmount.ToString("C")</td>
+                <td>@tx.PaymentAmount.ToString("C")</td>
+                <td>@tx.BalanceAfter.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>

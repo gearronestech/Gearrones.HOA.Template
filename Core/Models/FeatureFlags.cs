@@ -13,6 +13,7 @@ public class FeatureFlags
     public bool Accounts { get; set; }
     public bool Board { get; set; }
     public bool Financials { get; set; }
+    public bool FinancialLedger { get; set; }
     public bool Community { get; set; }
     public bool Violations { get; set; }
     public bool Voting { get; set; }

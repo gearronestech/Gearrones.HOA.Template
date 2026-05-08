@@ -11,6 +11,7 @@
     "Accounts": true,
     "Board": true,
     "Financials": false,
+    "FinancialLedger": true,
     "Community": false,
     "Violations": false,
     "Voting": false,

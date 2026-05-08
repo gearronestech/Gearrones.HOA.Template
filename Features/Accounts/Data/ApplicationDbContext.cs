@@ -1,4 +1,5 @@
-﻿using GearrOnes.HOA.Template.Features.Requests.Models;
+﻿using GearrOnes.HOA.Template.Features.Financials.Models;
+using GearrOnes.HOA.Template.Features.Requests.Models;
 using GearrOnes.HOA.Template.Features.Ownership.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -15,4 +16,6 @@ public class ApplicationDbContext : IdentityDbContext<Models.ApplicationUser>
     public DbSet<PropertyOwnership> PropertyOwnerships => Set<PropertyOwnership>();
     public DbSet<Property> Properties => Set<Property>();
     public DbSet<Person> Persons => Set<Person>();
+    public DbSet<LedgerEntry> LedgerEntries => Set<LedgerEntry>();
+    public DbSet<Payment> Payments => Set<Payment>();
 }

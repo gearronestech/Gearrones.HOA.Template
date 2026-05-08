@@ -23,6 +23,7 @@ public sealed class FeatureFlagService : IFeatureFlagService
             [FeatureKeys.Accounts] = f => f.Accounts,
             [FeatureKeys.Board] = f => f.Board,
             [FeatureKeys.Financials] = f => f.Financials,
+            [FeatureKeys.FinancialLedger] = f => f.FinancialLedger,
             [FeatureKeys.Community] = f => f.Community,
             [FeatureKeys.Violations] = f => f.Violations,
             [FeatureKeys.Voting] = f => f.Voting,
