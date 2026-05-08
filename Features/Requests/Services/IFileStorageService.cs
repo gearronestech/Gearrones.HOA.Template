@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GearrOnes.HOA.Template.Core.Attributes;
+using Microsoft.AspNetCore.Http;
 
-namespace Features.Requests.Services
+namespace GearrOnes.HOA.Template.Features.Requests.Services;
+
+[HoaFeature("FullManagement", 2)]
+public interface IFileStorageService
 {
-    internal class IFileStorageService
-    {
-    }
+    Task<StoredFileResult> SaveRequestAttachmentAsync(IFormFile file, CancellationToken cancellationToken = default);
+    Task<Stream> OpenReadAsync(string relativePath, CancellationToken cancellationToken = default);
+}
+
+public sealed class StoredFileResult
+{
+    public string StoredFileName { get; set; } = string.Empty;
+    public string RelativePath { get; set; } = string.Empty;
+    public string ContentType { get; set; } = string.Empty;
+    public long FileSize { get; set; }
 }

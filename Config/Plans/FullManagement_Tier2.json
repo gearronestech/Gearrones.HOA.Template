@@ -7,6 +7,7 @@
     "Documents": true,
     "Requests": true,
     "RequestMessaging": true,
+    "RequestAttachments": true,
     "Accounts": true,
     "Board": true,
     "Financials": false,

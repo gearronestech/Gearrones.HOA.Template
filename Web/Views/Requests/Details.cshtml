@@ -8,6 +8,37 @@
 <p><strong>Submitted:</strong> @Model.Request.CreatedUtc.ToString("u")</p>
 <p>@Model.Request.Description</p>
 
+<h2>Attachments</h2>
+@if (!Model.Attachments.Any())
+{
+    <p class="text-muted">No attachments uploaded yet.</p>
+}
+else
+{
+    <ul class="list-group mb-3">
+        @foreach (var attachment in Model.Attachments)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <a asp-action="DownloadAttachment" asp-route-id="@attachment.AttachmentId">@attachment.OriginalFileName</a>
+                    <small class="text-muted d-block">Uploaded by @attachment.UploadedByDisplayName on @attachment.CreatedUtc.ToString("u")</small>
+                </div>
+                <span class="badge text-bg-secondary">@attachment.FileSize bytes</span>
+            </li>
+        }
+    </ul>
+}
+
+<h3>Upload attachment</h3>
+<form asp-action="UploadAttachment" method="post" enctype="multipart/form-data" class="mb-4">
+    <input type="hidden" name="RequestId" value="@Model.Request.Id" />
+    <div class="mb-3">
+        <input class="form-control" type="file" name="File" />
+        <small class="text-muted">Allowed: .pdf, .png, .jpg, .jpeg, .doc, .docx, .txt. Max 10 MB.</small>
+    </div>
+    <button class="btn btn-outline-primary" type="submit">Upload</button>
+</form>
+
 <h2>Conversation</h2>
 @foreach (var item in Model.Timeline)
 {

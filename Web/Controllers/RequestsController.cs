@@ -47,6 +47,28 @@ public class RequestsController : Controller
         return RedirectToAction(nameof(Details), new { id = input.RequestId });
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [HoaFeature("FullManagement", 2)]
+    public async Task<IActionResult> UploadAttachment(UploadRequestAttachmentInputModel input, CancellationToken cancellationToken)
+    {
+        if (input.File is null)
+        {
+            return RedirectToAction(nameof(Details), new { id = input.RequestId });
+        }
+
+        await _requestMessagingService.AddAttachmentAsync(input, GetUserId(), GetRole(), cancellationToken);
+        return RedirectToAction(nameof(Details), new { id = input.RequestId });
+    }
+
+    [HttpGet]
+    [HoaFeature("FullManagement", 2)]
+    public async Task<IActionResult> DownloadAttachment(int id, CancellationToken cancellationToken)
+    {
+        var file = await _requestMessagingService.GetAttachmentAsync(id, GetUserId(), GetRole(), cancellationToken);
+        return file is null ? NotFound() : File(file.ContentStream, file.ContentType, file.OriginalFileName);
+    }
+
     private string GetUserId() => User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "homeowner-1";
     private string GetRole() => User.FindFirstValue(ClaimTypes.Role) ?? "Homeowner";
 }

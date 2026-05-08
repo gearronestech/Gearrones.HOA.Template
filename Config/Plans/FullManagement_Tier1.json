@@ -13,6 +13,7 @@
     "Violations": false,
     "Voting": false,
     "ExternalIntegrations": false,
-    "RequestMessaging": false
+    "RequestMessaging": false,
+    "RequestAttachments": false
   }
 }

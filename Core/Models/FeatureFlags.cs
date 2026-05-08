@@ -9,6 +9,7 @@ public class FeatureFlags
     public bool Documents { get; set; }
     public bool Requests { get; set; }
     public bool RequestMessaging { get; set; }
+    public bool RequestAttachments { get; set; }
     public bool Accounts { get; set; }
     public bool Board { get; set; }
     public bool Financials { get; set; }

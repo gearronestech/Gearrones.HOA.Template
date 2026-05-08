@@ -16,6 +16,7 @@ builder.Services.AddPlanConfiguration(builder.Configuration);
 builder.Services.AddHoaClientContext(builder.Configuration);
 builder.Services.AddCoreServices();
 builder.Services.AddScoped<INavigationService, NavigationService>();
+builder.Services.AddSingleton<IFileStorageService, LocalFileStorageService>();
 builder.Services.AddSingleton<IRequestMessagingService, InMemoryRequestMessagingService>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
