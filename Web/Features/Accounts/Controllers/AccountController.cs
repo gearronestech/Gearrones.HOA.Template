@@ -1,5 +1,6 @@
 ﻿using GearrOnes.HOA.Template.Features.Accounts.Services;
 using GearrOnes.HOA.Template.Features.Accounts.ViewModels;
+using GearrOnes.HOA.Template.Features.Ownership.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,10 +9,12 @@ namespace GearrOnes.HOA.Template.Web.Features.Accounts.Controllers;
 public class AccountController : Controller
 {
     private readonly IAccountService _accountService;
+    private readonly IPropertyOwnershipService _ownershipService;
 
-    public AccountController(IAccountService accountService)
+    public AccountController(IAccountService accountService, IPropertyOwnershipService ownershipService)
     {
         _accountService = accountService;
+        _ownershipService = ownershipService;
     }
 
     [HttpGet]
@@ -29,6 +32,12 @@ public class AccountController : Controller
         {
             foreach (var error in result.Errors) ModelState.AddModelError(string.Empty, error.Description);
             return View(model);
+        }
+
+        var suggestion = await _ownershipService.FindBestMatchByEmailAsync(model.Email);
+        if (suggestion is not null)
+        {
+            TempData["OwnershipMatch"] = $"Potential ownership match found: {suggestion.PersonName}. Board approval is required.";
         }
 
         return RedirectToAction(nameof(PendingApproval));

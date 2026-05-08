@@ -2,3 +2,7 @@
     ViewData["Title"] = "Pending Approval";
 }
 <div class="alert alert-info mt-3">Your account is pending board approval.</div>
+@if (TempData["OwnershipMatch"] is string message)
+{
+    <div class="alert alert-secondary mt-2">@message</div>
+}

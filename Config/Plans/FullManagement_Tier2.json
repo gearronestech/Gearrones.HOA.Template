@@ -14,6 +14,7 @@
     "Community": false,
     "Violations": false,
     "Voting": false,
-    "ExternalIntegrations": false
+    "ExternalIntegrations": false,
+    "OwnershipTracking": true
   }
 }

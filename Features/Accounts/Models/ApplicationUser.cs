@@ -9,4 +9,6 @@ public class ApplicationUser : IdentityUser
     public bool IsApproved { get; set; }
     public DateTime CreatedUtc { get; set; }
     public DateTime? ApprovedUtc { get; set; }
+    public int? OwnershipPersonId { get; set; }
+    public DateTime? OwnershipLinkApprovedUtc { get; set; }
 }

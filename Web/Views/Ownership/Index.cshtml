@@ -1,0 +1,23 @@
+﻿@model IReadOnlyList<GearrOnes.HOA.Template.Features.Ownership.ViewModels.OwnershipHistoryItemViewModel>
+@{
+    ViewData["Title"] = "Ownership History";
+}
+<h1>Ownership History</h1>
+<a asp-action="Upsert" class="btn btn-primary mb-3">Add Ownership Period</a>
+<table class="table table-striped">
+    <thead><tr><th>Property</th><th>Owner</th><th>Start</th><th>End</th><th>Closing Ref</th><th>Notes</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var row in Model)
+        {
+            <tr>
+                <td>@row.PropertyDisplay</td>
+                <td>@row.PersonDisplay</td>
+                <td>@row.StartDate.ToString("yyyy-MM-dd")</td>
+                <td>@row.EndDate?.ToString("yyyy-MM-dd")</td>
+                <td>@row.ClosingReference</td>
+                <td>@row.Notes</td>
+                <td><a asp-action="Upsert" asp-route-id="@row.Id" class="btn btn-sm btn-outline-secondary">Edit</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

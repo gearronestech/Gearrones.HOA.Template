@@ -27,6 +27,7 @@ public sealed class FeatureFlagService : IFeatureFlagService
             [FeatureKeys.Violations] = f => f.Violations,
             [FeatureKeys.Voting] = f => f.Voting,
             [FeatureKeys.ExternalIntegrations] = f => f.ExternalIntegrations,
+            [FeatureKeys.OwnershipTracking] = f => f.OwnershipTracking,
         };
     }
 

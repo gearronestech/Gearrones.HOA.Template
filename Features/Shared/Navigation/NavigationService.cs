@@ -37,6 +37,7 @@ public sealed class NavigationService : INavigationService
         new NavItem { Title = "Requests", Controller = "Requests", Action = "Index", FeatureKey = FeatureKeys.Requests, RequiredRole = "Board", IconClass = "bi bi-chat-left-text" },
         new NavItem { Title = "Account Approvals", Controller = "Home", Action = "Index", FeatureKey = FeatureKeys.Accounts, RequiredRole = "Board", IconClass = "bi bi-person-check" },
         new NavItem { Title = "Board Members", Controller = "Home", Action = "Index", FeatureKey = FeatureKeys.Board, RequiredRole = "Board", IconClass = "bi bi-people" },
+        new NavItem { Title = "Ownership History", Controller = "Ownership", Action = "Index", FeatureKey = FeatureKeys.OwnershipTracking, RequiredRole = "Board", IconClass = "bi bi-house-check" },
     ];
 
     private static IEnumerable<NavItem> GetAdminNavigation() =>

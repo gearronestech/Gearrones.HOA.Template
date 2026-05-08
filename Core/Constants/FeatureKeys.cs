@@ -13,4 +13,5 @@ public static class FeatureKeys
     public const string Violations = nameof(Violations);
     public const string Voting = nameof(Voting);
     public const string ExternalIntegrations = nameof(ExternalIntegrations);
+    public const string OwnershipTracking = nameof(OwnershipTracking);
 }

@@ -7,6 +7,7 @@ using GearrOnes.HOA.Template.Features.Accounts.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using GearrOnes.HOA.Template.Features.Requests.Services;
+using GearrOnes.HOA.Template.Features.Ownership.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 .AddDefaultTokenProviders();
 builder.Services.AddScoped<IEmailSender, ConsoleEmailSender>();
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IPropertyOwnershipService, PropertyOwnershipService>();
 
 var app = builder.Build();
 
