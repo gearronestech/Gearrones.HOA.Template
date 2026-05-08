@@ -3,3 +3,8 @@
 }
 
 <h1>Dashboard</h1>
+
+<form asp-action="PublishAnnouncementPlaceholder" method="post" class="mt-3">
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-outline-primary">Publish announcement (placeholder)</button>
+</form>

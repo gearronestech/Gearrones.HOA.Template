@@ -19,4 +19,5 @@ public class FeatureFlags
     public bool Voting { get; set; }
     public bool ExternalIntegrations { get; set; }
     public bool OwnershipTracking { get; set; }
+    public bool Notifications { get; set; }
 }

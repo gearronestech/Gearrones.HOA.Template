@@ -16,6 +16,7 @@
     "Violations": false,
     "Voting": false,
     "ExternalIntegrations": false,
-    "OwnershipTracking": true
+    "OwnershipTracking": true,
+    "Notifications": true
   }
 }

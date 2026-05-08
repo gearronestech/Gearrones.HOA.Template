@@ -1,0 +1,35 @@
+﻿@model IReadOnlyList<GearrOnes.HOA.Template.Features.Notifications.ViewModels.NotificationListItemViewModel>
+@{
+    ViewData["Title"] = "Notifications";
+}
+
+<h1>Notifications</h1>
+
+@if (!Model.Any())
+{
+    <p>No notifications yet.</p>
+}
+else
+{
+    <div class="list-group">
+        @foreach (var notification in Model)
+        {
+            <div class="list-group-item @(notification.IsRead ? "" : "list-group-item-info")">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">@notification.Title</h5>
+                    <small>@notification.CreatedUtc.ToLocalTime()</small>
+                </div>
+                <p class="mb-1">@notification.Message</p>
+                <small class="text-muted">Type: @notification.Type</small>
+                @if (!notification.IsRead)
+                {
+                    <form asp-action="MarkAsRead" method="post" class="mt-2">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@notification.Id" />
+                        <button type="submit" class="btn btn-sm btn-outline-primary">Mark as read</button>
+                    </form>
+                }
+            </div>
+        }
+    </div>
+}

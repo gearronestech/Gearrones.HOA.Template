@@ -16,6 +16,7 @@
     "ExternalIntegrations": false,
     "RequestMessaging": false,
     "RequestAttachments": false,
-    "OwnershipTracking": false
+    "OwnershipTracking": false,
+    "Notifications": false
   }
 }

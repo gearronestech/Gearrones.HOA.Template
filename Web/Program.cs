@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using GearrOnes.HOA.Template.Features.Requests.Services;
 using GearrOnes.HOA.Template.Features.Ownership.Services;
 using GearrOnes.HOA.Template.Features.Financials.Services;
+using GearrOnes.HOA.Template.Features.Notifications.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +33,7 @@ builder.Services.AddScoped<IEmailSender, ConsoleEmailSender>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IPropertyOwnershipService, PropertyOwnershipService>();
 builder.Services.AddScoped<IFinancialLedgerService, FinancialLedgerService>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
 
 var app = builder.Build();
 

@@ -1,9 +1,13 @@
 ﻿@inject IHoaClientContext Hoa
 @inject GearrOnes.HOA.Template.Features.Shared.Navigation.INavigationService NavService
 @inject IHttpContextAccessor HttpContextAccessor
+@inject GearrOnes.HOA.Template.Features.Notifications.Services.INotificationService NotificationService
 @{
     var user = HttpContextAccessor.HttpContext?.User ?? new System.Security.Claims.ClaimsPrincipal();
     var navItems = NavService.GetMainNavigation(user);
+    var currentUserId = user.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "homeowner-1";
+    var notifications = user.Identity?.IsAuthenticated ?? false ? await NotificationService.GetForUserAsync(currentUserId, 5, Context.RequestAborted) : [];
+    var unreadCount = user.Identity?.IsAuthenticated ?? false ? await NotificationService.GetUnreadCountAsync(currentUserId, Context.RequestAborted) : 0;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +32,16 @@
                         }
                         @if (user.Identity?.IsAuthenticated ?? false)
                         {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Notifications (@unreadCount)</a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    @foreach (var n in notifications)
+                                    {
+                                        <li><a class="dropdown-item" asp-controller="Notifications" asp-action="Index">@n.Title</a></li>
+                                    }
+                                    <li><a class="dropdown-item text-primary" asp-controller="Notifications" asp-action="Index">View all</a></li>
+                                </ul>
+                            </li>
                             <li class="nav-item">
                                 <form asp-controller="Account" asp-action="Logout" method="post"><button type="submit" class="btn btn-link nav-link">Logout</button></form>
                             </li>

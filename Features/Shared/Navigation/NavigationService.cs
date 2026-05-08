@@ -29,6 +29,7 @@ public sealed class NavigationService : INavigationService
         new NavItem { Title = "Documents", Controller = "Documents", Action = "Index", FeatureKey = FeatureKeys.Documents, IconClass = "bi bi-file-earmark-text" },
         new NavItem { Title = "Requests", Controller = "Requests", Action = "Index", FeatureKey = FeatureKeys.Requests, IconClass = "bi bi-chat-left-text" },
         new NavItem { Title = "Financial Ledger", Controller = "Financials", Action = "Index", FeatureKey = FeatureKeys.FinancialLedger, IconClass = "bi bi-receipt" },
+        new NavItem { Title = "Notifications", Controller = "Notifications", Action = "Index", FeatureKey = FeatureKeys.Notifications, IconClass = "bi bi-bell" },
     ];
 
     private static IEnumerable<NavItem> GetBoardNavigation() =>
@@ -40,6 +41,7 @@ public sealed class NavigationService : INavigationService
         new NavItem { Title = "Board Members", Controller = "Home", Action = "Index", FeatureKey = FeatureKeys.Board, RequiredRole = "Board", IconClass = "bi bi-people" },
         new NavItem { Title = "Ownership History", Controller = "Ownership", Action = "Index", FeatureKey = FeatureKeys.OwnershipTracking, RequiredRole = "Board", IconClass = "bi bi-house-check" },
         new NavItem { Title = "Financial Management", Controller = "Financials", Action = "Manage", FeatureKey = FeatureKeys.FinancialLedger, RequiredRole = "Board", IconClass = "bi bi-cash-stack" },
+        new NavItem { Title = "Notifications", Controller = "Notifications", Action = "Index", FeatureKey = FeatureKeys.Notifications, RequiredRole = "Board", IconClass = "bi bi-bell" },
     ];
 
     private static IEnumerable<NavItem> GetAdminNavigation() =>

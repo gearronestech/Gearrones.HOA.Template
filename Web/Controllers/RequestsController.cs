@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using GearrOnes.HOA.Template.Core.Attributes;
 using GearrOnes.HOA.Template.Core.Constants;
+using GearrOnes.HOA.Template.Features.Notifications.Services;
 using GearrOnes.HOA.Template.Features.Requests.Services;
 using GearrOnes.HOA.Template.Features.Requests.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +12,12 @@ namespace GearrOnes.HOA.Template.Web.Controllers;
 public class RequestsController : Controller
 {
     private readonly IRequestMessagingService _requestMessagingService;
+    private readonly INotificationService _notificationService;
 
-    public RequestsController(IRequestMessagingService requestMessagingService)
+    public RequestsController(IRequestMessagingService requestMessagingService, INotificationService notificationService)
     {
         _requestMessagingService = requestMessagingService;
+        _notificationService = notificationService;
     }
 
     [HoaFeature("FullManagement", 2)]
@@ -44,6 +47,7 @@ public class RequestsController : Controller
         }
 
         await _requestMessagingService.AddMessageAsync(input, GetUserId(), GetRole(), cancellationToken);
+        await _notificationService.CreateForUserAsync(GetUserId(), "RequestUpdate", "Request updated", $"A new message was added to request #{input.RequestId}.", cancellationToken);
         return RedirectToAction(nameof(Details), new { id = input.RequestId });
     }
 
@@ -58,6 +62,7 @@ public class RequestsController : Controller
         }
 
         await _requestMessagingService.AddAttachmentAsync(input, GetUserId(), GetRole(), cancellationToken);
+        await _notificationService.CreateForUserAsync(GetUserId(), "DocumentUpload", "Document uploaded", $"A document was uploaded to request #{input.RequestId}.", cancellationToken);
         return RedirectToAction(nameof(Details), new { id = input.RequestId });
     }
 
