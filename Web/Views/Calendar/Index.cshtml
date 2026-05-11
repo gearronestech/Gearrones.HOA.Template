@@ -1,0 +1,46 @@
+﻿@model GearrOnes.HOA.Template.Features.Calendar.ViewModels.CalendarMonthViewModel
+@{
+    ViewData["Title"] = "Calendar";
+    var prev = new DateTime(Model.Year, Model.Month, 1).AddMonths(-1);
+    var next = new DateTime(Model.Year, Model.Month, 1).AddMonths(1);
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">@Model.MonthLabel</h1>
+    @if (User.IsInRole("Admin") || User.IsInRole("BoardMember"))
+    {
+        <a class="btn btn-primary" asp-action="Upsert">Create Event</a>
+    }
+</div>
+<div class="d-flex justify-content-between mb-3">
+    <a class="btn btn-outline-secondary" asp-action="Index" asp-route-year="@prev.Year" asp-route-month="@prev.Month">&laquo; Previous</a>
+    <a class="btn btn-outline-secondary" asp-action="Index" asp-route-year="@next.Year" asp-route-month="@next.Month">Next &raquo;</a>
+</div>
+<table class="table table-bordered align-middle">
+    <thead><tr>@foreach (var d in Enum.GetNames<DayOfWeek>())
+            {
+                <th>@d</th>
+            }</tr></thead>
+    <tbody>
+        @for (var week = 0; week < 6; week++)
+        {
+            <tr>
+                @for (var day = 0; day < 7; day++)
+                {
+                    var item = Model.Days[(week * 7) + day];
+                    <td class="@(item.IsCurrentMonth ? string.Empty : "bg-light")" style="width:14%;vertical-align:top;min-height:120px;">
+                        <div class="fw-bold">@item.Date.Day</div>
+                        @foreach (var ev in item.Events.Take(3))
+                        {
+                            <div><a asp-action="Details" asp-route-id="@ev.Id">@ev.Title</a></div>
+                        }
+                        @if (item.Events.Count > 3)
+                        {
+                            <div class="text-muted small">+@(item.Events.Count - 3) more</div>
+                        }
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

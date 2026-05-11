@@ -17,6 +17,7 @@
     "Voting": false,
     "ExternalIntegrations": false,
     "OwnershipTracking": true,
-    "Notifications": true
+    "Notifications": true,
+    "Calendar": true
   }
 }

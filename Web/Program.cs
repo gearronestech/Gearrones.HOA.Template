@@ -10,6 +10,7 @@ using GearrOnes.HOA.Template.Features.Requests.Services;
 using GearrOnes.HOA.Template.Features.Ownership.Services;
 using GearrOnes.HOA.Template.Features.Financials.Services;
 using GearrOnes.HOA.Template.Features.Notifications.Services;
+using GearrOnes.HOA.Template.Features.Calendar.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +35,7 @@ builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IPropertyOwnershipService, PropertyOwnershipService>();
 builder.Services.AddScoped<IFinancialLedgerService, FinancialLedgerService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
+builder.Services.AddScoped<ICalendarEventService, CalendarEventService>();
 
 var app = builder.Build();
 

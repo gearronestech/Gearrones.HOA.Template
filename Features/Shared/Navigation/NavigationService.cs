@@ -30,6 +30,7 @@ public sealed class NavigationService : INavigationService
         new NavItem { Title = "Requests", Controller = "Requests", Action = "Index", FeatureKey = FeatureKeys.Requests, IconClass = "bi bi-chat-left-text" },
         new NavItem { Title = "Financial Ledger", Controller = "Financials", Action = "Index", FeatureKey = FeatureKeys.FinancialLedger, IconClass = "bi bi-receipt" },
         new NavItem { Title = "Notifications", Controller = "Notifications", Action = "Index", FeatureKey = FeatureKeys.Notifications, IconClass = "bi bi-bell" },
+        new NavItem { Title = "Calendar", Controller = "Calendar", Action = "Index", FeatureKey = FeatureKeys.Calendar, IconClass = "bi bi-calendar3" },
     ];
 
     private static IEnumerable<NavItem> GetBoardNavigation() =>
@@ -42,6 +43,7 @@ public sealed class NavigationService : INavigationService
         new NavItem { Title = "Ownership History", Controller = "Ownership", Action = "Index", FeatureKey = FeatureKeys.OwnershipTracking, RequiredRole = "Board", IconClass = "bi bi-house-check" },
         new NavItem { Title = "Financial Management", Controller = "Financials", Action = "Manage", FeatureKey = FeatureKeys.FinancialLedger, RequiredRole = "Board", IconClass = "bi bi-cash-stack" },
         new NavItem { Title = "Notifications", Controller = "Notifications", Action = "Index", FeatureKey = FeatureKeys.Notifications, RequiredRole = "Board", IconClass = "bi bi-bell" },
+        new NavItem { Title = "Calendar", Controller = "Calendar", Action = "Index", FeatureKey = FeatureKeys.Calendar, RequiredRole = "Board", IconClass = "bi bi-calendar3" },
     ];
 
     private static IEnumerable<NavItem> GetAdminNavigation() =>

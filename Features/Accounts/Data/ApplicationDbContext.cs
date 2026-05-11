@@ -2,6 +2,7 @@
 using GearrOnes.HOA.Template.Features.Requests.Models;
 using GearrOnes.HOA.Template.Features.Ownership.Models;
 using GearrOnes.HOA.Template.Features.Notifications.Models;
+using GearrOnes.HOA.Template.Features.Calendar.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,4 +21,5 @@ public class ApplicationDbContext : IdentityDbContext<Models.ApplicationUser>
     public DbSet<LedgerEntry> LedgerEntries => Set<LedgerEntry>();
     public DbSet<Payment> Payments => Set<Payment>();
     public DbSet<Notification> Notifications => Set<Notification>();
+    public DbSet<CalendarEvent> CalendarEvents => Set<CalendarEvent>();
 }

@@ -1,0 +1,26 @@
+﻿@model GearrOnes.HOA.Template.Features.Calendar.ViewModels.CalendarEventDetailViewModel
+@{
+    ViewData["Title"] = "Event Details";
+}
+
+<h1 class="h3">@Model.Title</h1>
+<p class="text-muted">@Model.StartUtc.ToLocalTime().ToString("f") - @Model.EndUtc.ToLocalTime().ToString("f")</p>
+@if (!string.IsNullOrWhiteSpace(Model.Description))
+{
+    <p>@Model.Description</p>
+}
+@if (Model.LinkedPostId.HasValue)
+{
+    <p><strong>Linked Post ID:</strong> @Model.LinkedPostId.Value</p>
+}
+
+<a class="btn btn-outline-secondary" asp-action="Index">Back to Calendar</a>
+@if (User.IsInRole("Admin") || User.IsInRole("BoardMember"))
+{
+    <a class="btn btn-primary" asp-action="Upsert" asp-route-id="@Model.Id">Edit</a>
+    <form class="d-inline" method="post" asp-action="Delete">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="id" value="@Model.Id" />
+        <button class="btn btn-danger" type="submit">Delete</button>
+    </form>
+}

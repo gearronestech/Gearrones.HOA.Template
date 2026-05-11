@@ -17,6 +17,7 @@
     "RequestMessaging": false,
     "RequestAttachments": false,
     "OwnershipTracking": false,
-    "Notifications": false
+    "Notifications": false,
+    "Calendar": false
   }
 }
